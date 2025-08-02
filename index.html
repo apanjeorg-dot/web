@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APANJE - Fundación</title>
+    <link rel="stylesheet" href="Estilos/General.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo-img">
+                <img src="Imagenes/logo.jpg" alt="APANJE Logo" id="logo" style="width: 80px; border-radius: 50%;">
+            </div>
+            <div class="logo-text">
+                <h1>APANJE</h1>
+                <p>Asociación de Padres y Amigos de Niñ@s y Jóvenes Especiales</p>
+            </div>
+        </div>
+<div class="menu-toggle" id="menu-toggle">&#9776;</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="paginas/about.html">Nosotros</a></li>
+                <li><a href="paginas/Programan.html">Programas</a></li>
+                <li><a href="paginas/news.html">Noticias</a></li>
+                <li><a href="paginas/colaboration.html">Colabora</a></li>
+                <li><a href="paginas/contact.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <section class="hero fade-in">
+            <h2  >🤝 Bienvenidos a APANJE</h2>
+            <p>Trabajamos por la inclusión, la educación y el bienestar de niños, jóvenes y adultos con discapacidad intelectual.</p>
+            <br>
+            <a href="../Apanje/paginas/about.html" class="btn">Conócenos más sobre APANJE</a>
+        </section>
+
+        <section class="services fade-in">
+          <div class="card">
+            <h2>💡 ¿Qué hacemos?</h2>
+          </div>
+            <div class="card">
+                <h3>🧠 Rehabilitación Integral</h3>
+                <p>Terapias funcionales, ocupacionales y recreativas adaptadas a cada necesidad.</p>
+            </div>
+
+            <div class="card">
+                <h3>📚 Educación Especial</h3>
+                <p>Programas educativos y talleres vocacionales para el desarrollo de habilidades.</p>
+            </div>
+
+            <div class="card">
+                <h3>👨‍👩‍👧‍👦 Apoyo a Familias</h3>
+                <p>Acompañamiento a padres y familiares para fortalecer la red de apoyo comunitario.</p>
+            </div>
+
+            <div class="card">
+                <h3>🎨 programa de profesionalización vocacional</h3>
+                <p>Producción de miel, piñatas, café, encurtidos y otros productos elaborados por nuestros estudiantes.</p>
+            </div>
+        </section>
+
+        <section class= "card">
+            <h2>❤️ ¡Súmate a nuestra causa!</h2>
+            <p>Puedes colaborar con APANJE a través de donaciones, voluntariado o comprando nuestros productos.</p>
+             <br>
+            <a href="../Apanje/paginas/colaboration.html" class="btn">Colabora Ahora</a>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 APANJE - Asociación de Padres y Amigos de Niñ@s y Jóvenes Especiales</p>
+    </footer>
+
+<script>
+  // Resaltar la sección activa en la barra de navegación
+  document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('nav a');
+    const currentPath = window.location.pathname.toLowerCase();
+    navLinks.forEach(link => {
+      // Normalizar rutas para comparar solo el nombre del archivo
+      const linkPath = link.getAttribute('href').toLowerCase().split('/').pop();
+      const pagePath = currentPath.split('/').pop();
+      if (linkPath === pagePath) {
+        link.classList.add('active-link');
+      } else {
+        link.classList.remove('active-link');
+      }
+      // Transición al hacer clic
+      link.addEventListener('click', function() {
+        navLinks.forEach(l => l.classList.remove('active-link'));
+        this.classList.add('active-link');
+      });
+    });
+  });
+
+  // Animación fade-in al hacer scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    const faders = document.querySelectorAll('.fade-in');
+
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        appearOnScroll.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  });
+
+  // Menú toggle para móviles
+  const menuToggle = document.getElementById('menu-toggle');
+  const navUl = document.querySelector('header nav ul');
+
+  menuToggle.addEventListener('click', () => {
+    navUl.classList.toggle('active');
+  });
+</script>
+
+</html>
