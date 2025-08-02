@@ -28,15 +28,37 @@
   nav ul {
     flex-direction: column;
     gap: 8px;
-    padding: 0;
-    margin: 0;
+    padding: 10px 0 10px 0;
+    margin: 0 8px;
     background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.13);
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    transition: box-shadow 0.3s, background 0.3s;
+    border: 1.5px solid #d9a441;
   }
   nav ul li {
     width: 100%;
     text-align: center;
+  }
+  nav ul li a {
+    color: #6B4C3B !important;
+    background: none;
+    padding: 10px 0;
+    border-radius: 8px;
+    display: block;
+    font-size: 1.13rem;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+  }
+  nav ul li a.active-link,
+  nav ul li a:hover {
+    background: #d9a441;
+    color: #fff !important;
   }
   .menu-toggle {
     display: block;
@@ -49,6 +71,10 @@
   }
   nav ul.active {
     display: flex;
+  }
+  header {
+    position: relative;
+    z-index: 200;
   }
   .about-section, .location-section, .photo-album, .contact-section {
     padding: 12px 2vw !important;
