@@ -1,3 +1,196 @@
+/* Evitar que los botones largos se partan en móviles */
+.btn, a.btn {
+  white-space: nowrap;
+}
+@media (max-width: 500px) {
+  .btn, a.btn {
+    font-size: 0.98rem;
+    padding: 10px 8px;
+    min-width: 0;
+    max-width: 100vw;
+    white-space: nowrap;
+    overflow-x: auto;
+    text-overflow: ellipsis;
+  }
+}
+/* --- Menú desplegable accesible para móviles --- */
+.nav-dropdown {
+  display: none;
+  margin: 0 8px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.13);
+  border: 1.5px solid #d9a441;
+  padding: 0;
+  z-index: 9999;
+}
+.nav-dropdown summary {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #6B4C3B;
+  background: #fffbe7;
+  border-radius: 10px;
+  padding: 12px 18px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  box-shadow: 0 2px 8px rgba(217,164,65,0.08);
+  margin-bottom: 0;
+}
+.nav-dropdown[open] summary {
+  background: #d9a441;
+  color: #fff;
+}
+.nav-dropdown ul {
+  list-style: none;
+  padding: 0 0 10px 0;
+  margin: 0;
+}
+.nav-dropdown ul li {
+  text-align: center;
+  margin: 0;
+}
+.nav-dropdown ul li a {
+  display: block;
+  padding: 12px 0;
+  color: #6B4C3B;
+  font-size: 1.13rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-dropdown ul li a.active-link,
+.nav-dropdown ul li a:hover {
+  background: #d9a441;
+  color: #fff !important;
+}
+
+@media (max-width: 700px) {
+  nav.main-nav {
+    display: none !important;
+  }
+  .nav-dropdown {
+    display: block !important;
+  }
+}
+@media (min-width: 701px) {
+  .nav-dropdown {
+    display: none !important;
+  }
+  nav.main-nav {
+    display: block !important;
+  }
+}
+/* --- RESPONSIVE UNIVERSAL PARA TODAS LAS PLATAFORMAS --- */
+@media (max-width: 1200px) {
+  .container, main.container {
+    max-width: 98vw;
+    padding: 18px 2vw !important;
+  }
+  .photo-album, .about-section, .programs-section, .colabora-section, .contact-section, .location-section {
+    padding: 18px 2vw !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-grid, .colabora-grid, .product-grid, .news-card {
+    flex-direction: column !important;
+    gap: 14px !important;
+  }
+  .news-image img, .album-grid img {
+    width: 100% !important;
+    max-width: 100vw !important;
+    height: auto !important;
+  }
+  .logo-img img {
+    width: 70px !important;
+  }
+}
+
+@media (max-width: 700px) {
+  html, body {
+    font-size: 15px;
+  }
+  .container, main.container {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    padding: 10px 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+  }
+  .logo-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-left: 0 !important;
+    padding: 8px 0;
+  }
+  .logo-img img {
+    width: 60px !important;
+    height: auto !important;
+  }
+  nav ul {
+    margin: 0 2vw;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.13);
+    padding: 8px 0;
+  }
+  .about-section, .location-section, .photo-album, .contact-section, .colabora-section {
+    padding: 10px 2vw !important;
+    margin: 8px 0 !important;
+    border-radius: 8px !important;
+  }
+  .album-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6px !important;
+  }
+  .album-grid img {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 6px;
+  }
+  .location-section {
+    max-width: 99vw !important;
+    padding: 8px 2vw !important;
+  }
+  iframe {
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    border-radius: 8px !important;
+  }
+  .social-list {
+    padding-left: 6px;
+  }
+  .news-card {
+    flex-direction: column !important;
+    gap: 10px !important;
+    padding: 10px !important;
+  }
+}
+
+@media (max-width: 500px) {
+  html, body {
+    font-size: 14px;
+  }
+  .logo-img img {
+    width: 44px !important;
+  }
+  .container, main.container, .about-section, .location-section, .photo-album, .contact-section, .colabora-section {
+    padding: 4px 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  nav ul {
+    margin: 0 1vw;
+    border-radius: 8px;
+    padding: 4px 0;
+  }
+  .album-grid {
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+  }
+}
 /* --- RESPONSIVE DESIGN PARA DISPOSITIVOS VERTICALES Y MÓVILES --- */
 @media (max-width: 700px) {
   body {
@@ -28,18 +221,54 @@
   nav ul {
     flex-direction: column;
     gap: 8px;
-    padding: 10px 0 10px 0;
+    padding: 0;
     margin: 0 8px;
     background: #fff;
     border-radius: 14px;
     box-shadow: 0 4px 18px rgba(0,0,0,0.13);
-    position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    transition: box-shadow 0.3s, background 0.3s;
     border: 1.5px solid #d9a441;
+    position: fixed;
+    top: 60px;
+    left: 2vw;
+    right: 2vw;
+    z-index: 9999;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s, background 0.3s;
+    display: block;
+  }
+  nav ul.active {
+    max-height: 400px;
+    padding: 10px 0 10px 0;
+    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s, background 0.3s;
+  }
+  .menu-toggle {
+    display: block;
+    font-size: 2rem;
+    margin: 0 10px;
+    cursor: pointer;
+    z-index: 10000;
+    position: relative;
+    color: #6B4C3B;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    padding: 2px 10px;
+  }
+  nav ul li a {
+    color: #6B4C3B !important;
+    background: none;
+    padding: 10px 0;
+    border-radius: 8px;
+    display: block;
+    font-size: 1.13rem;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+  }
+  nav ul li a.active-link,
+  nav ul li a:hover {
+    background: #d9a441;
+    color: #fff !important;
   }
   nav ul li {
     width: 100%;
@@ -73,8 +302,8 @@
     display: flex;
   }
   header {
-    position: relative;
-    z-index: 200;
+    position: static;
+    z-index: auto;
   }
   .about-section, .location-section, .photo-album, .contact-section {
     padding: 12px 2vw !important;
@@ -777,11 +1006,4 @@ header nav ul li a {
 
 .btn-readmore:hover {
   background-color: #004080;
-}
-
-   .container {
-  width: 100%;
-  max-width: 1200px;
-  margin: auto;
-  padding: 2rem;
 }

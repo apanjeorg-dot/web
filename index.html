@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APANJE - Fundación</title>
     <link rel="stylesheet" href="Estilos/General.css">
 </head>
@@ -19,8 +18,8 @@
                 <p>Asociación de Padres y Amigos de Niñ@s y Jóvenes Especiales</p>
             </div>
         </div>
-<div class="menu-toggle" id="menu-toggle">&#9776;</div>
-        <nav>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+        <nav class="main-nav">
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="paginas/about.html">Nosotros</a></li>
@@ -30,6 +29,17 @@
                 <li><a href="paginas/contact.html">Contacto</a></li>
             </ul>
         </nav>
+        <details class="nav-dropdown" id="nav-dropdown">
+          <summary>Menú</summary>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="paginas/about.html">Nosotros</a></li>
+            <li><a href="paginas/Programan.html">Programas</a></li>
+            <li><a href="paginas/news.html">Noticias</a></li>
+            <li><a href="paginas/colaboration.html">Colabora</a></li>
+            <li><a href="paginas/contact.html">Contacto</a></li>
+          </ul>
+        </details>
     </header>
 
     <main class="container">
@@ -85,12 +95,12 @@
     </footer>
 
 <script>
-  // Resaltar la sección activa en la barra de navegación
+
+  // Resaltar la sección activa en la barra de navegación y en el menú desplegable
   document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('nav a');
+    const navLinks = document.querySelectorAll('nav a, .nav-dropdown ul a');
     const currentPath = window.location.pathname.toLowerCase();
     navLinks.forEach(link => {
-      // Normalizar rutas para comparar solo el nombre del archivo
       const linkPath = link.getAttribute('href').toLowerCase().split('/').pop();
       const pagePath = currentPath.split('/').pop();
       if (linkPath === pagePath) {
@@ -98,12 +108,25 @@
       } else {
         link.classList.remove('active-link');
       }
-      // Transición al hacer clic
       link.addEventListener('click', function() {
         navLinks.forEach(l => l.classList.remove('active-link'));
         this.classList.add('active-link');
       });
     });
+    // Mostrar solo el menú adecuado según el ancho
+    function toggleNavMenus() {
+      const nav = document.querySelector('nav.main-nav');
+      const dropdown = document.getElementById('nav-dropdown');
+      if(window.innerWidth <= 700) {
+        nav.style.display = 'none';
+        dropdown.style.display = 'block';
+      } else {
+        nav.style.display = 'block';
+        dropdown.style.display = 'none';
+      }
+    }
+    toggleNavMenus();
+    window.addEventListener('resize', toggleNavMenus);
   });
 
   // Animación fade-in al hacer scroll
@@ -128,14 +151,14 @@
     });
   });
 
-  // Menú toggle para móviles
+  // Menú toggle para móviles (solo para menú hamburguesa, si se usa)
   const menuToggle = document.getElementById('menu-toggle');
   const navUl = document.querySelector('header nav ul');
-
-  menuToggle.addEventListener('click', () => {
-    navUl.classList.toggle('active');
-  });
+  if(menuToggle && navUl) {
+    menuToggle.addEventListener('click', () => {
+      navUl.classList.toggle('active');
+    });
+  }
 </script>
 
 </html>
-
